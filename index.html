@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>Expediente Agencia de Dispatch — Arranque completo · Consultoría Omar Cruz</title>
+<meta name="description" content="Acompañamiento para armar el expediente de arranque de tu agencia de dispatch de camiones: LLC, EIN, contrato carrier–dispatcher listo para firmar y checklist de arranque completo. Consultoría Omar Cruz, Hyattsville, MD." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  /* ============================================================
+     FAMILIA VISUAL: «MANIFIESTO DE RUTA»
+     Patrón de lectura: manifiesto de carga / hoja de ruta —
+     la página se lee como una ruta con paradas numeradas sobre
+     una línea de carretera. Tipografía: Archivo (titulares
+     pesados, casi señalización vial) + Space Mono (datos de ruta).
+     Mundo de color: asfalto cálido, papel hueso y ámbar de
+     señalización. Distinto a «Expediente» (MHIC) y a las demás
+     páginas de asistencia de la casa.
+     ============================================================ */
+  :root{
+    --bg:#f4efe4;
+    --paper:#fffdf7;
+    --paper-2:#efe8d8;
+    --ink:#1c1a15;
+    --ink-2:#4a4436;
+    --muted:#7d7460;
+    --line:#d9d0ba;
+    --line-strong:#b3a888;
+    --asphalt:#211e17;
+    --asphalt-2:#35301f;
+    --amber:#e8930c;
+    --amber-dark:#b96e00;
+    --amber-bg:#fdeed3;
+    --red:#b3271e;
+    --red-bg:#fbeae8;
+    --green:#1e6b34;
+    --green-bg:#e6f2e8;
+    --shadow:0 1px 2px rgba(28,26,21,.07), 0 12px 30px rgba(28,26,21,.08);
+    --radius:6px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#171410;
+      --paper:#221f19;
+      --paper-2:#2b271e;
+      --ink:#f2ecdd;
+      --ink-2:#cfc7ae;
+      --muted:#9c937b;
+      --line:#3d382b;
+      --line-strong:#5a5340;
+      --asphalt:#0d0b08;
+      --asphalt-2:#241f16;
+      --amber:#f5a623;
+      --amber-dark:#f5a623;
+      --amber-bg:#33270e;
+      --red:#f08a80;
+      --red-bg:#331d1a;
+      --green:#7bc98f;
+      --green-bg:#17301d;
+      --shadow:0 1px 2px rgba(0,0,0,.35), 0 12px 30px rgba(0,0,0,.4);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Archivo", system-ui, -apple-system, sans-serif;
+    font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  .mono{font-family:"Space Mono", ui-monospace, monospace}
+  a{color:var(--amber-dark)}
+
+  .topbar{background:var(--asphalt);color:#f5efdd}
+  .topbar-in{max-width:1020px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  .topbar .loc{font-family:"Space Mono",monospace;font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:#cbbf9d}
+  .topbar a.tel{color:#fff;text-decoration:none;font-weight:800;font-size:.95rem;display:inline-flex;align-items:center;gap:8px;min-height:36px}
+  .topbar a.tel:hover{text-decoration:underline}
+
+  .wrap{max-width:1020px;margin:0 auto;padding:0 20px}
+
+  /* ---------- Hero: cabecera del manifiesto ---------- */
+  header.hero{padding:36px 0 10px}
+  .manifest{
+    background:var(--paper);border:2px solid var(--ink);border-radius:var(--radius);
+    box-shadow:8px 8px 0 var(--amber);overflow:hidden;
+  }
+  .manifest-head{
+    background:var(--asphalt);color:#f5efdd;padding:16px 24px;
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  }
+  .shield{width:42px;height:46px;flex:0 0 auto}
+  .brand-name{font-weight:900;font-size:1.02rem;line-height:1.15;text-transform:uppercase;letter-spacing:.02em}
+  .brand-sub{font-family:"Space Mono",monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#cbbf9d}
+  .manifest-no{margin-left:auto;font-family:"Space Mono",monospace;font-size:.76rem;border:1.5px dashed var(--amber);border-radius:4px;padding:7px 12px;color:#f5c86b;text-align:right;line-height:1.5}
+  .manifest-no b{color:#fff}
+  .hero-body{padding:32px 26px 28px}
+  .kicker{font-family:"Space Mono",monospace;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--amber-dark);margin:0 0 12px}
+  h1{font-size:clamp(2rem,5.4vw,3.2rem);line-height:1.04;font-weight:900;letter-spacing:-.01em;text-transform:uppercase;margin:0 0 16px;max-width:17ch}
+  h1 .hl{background:var(--amber);color:#1c1a15;padding:0 .1em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+  .lede{font-size:1.13rem;color:var(--ink-2);max-width:60ch;margin:0 0 24px}
+  .lede strong{color:var(--ink)}
+  .ctas{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    min-height:52px;padding:13px 24px;border-radius:4px;
+    font-weight:800;font-size:1rem;text-decoration:none;border:2px solid var(--ink);
+    text-transform:uppercase;letter-spacing:.02em;transition:transform .12s ease;
+  }
+  .btn-primary{background:var(--amber);color:#1c1a15;border-color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
+  .btn-primary:hover{transform:translate(-1px,-1px)}
+  .btn-ghost{background:transparent;color:var(--ink)}
+  .btn-ghost:hover{background:var(--paper-2)}
+  .hero-note{margin:18px 0 0;font-size:.93rem;color:var(--muted);max-width:62ch}
+  .hero-note strong{color:var(--ink-2)}
+
+  /* ---------- Ruta / secciones como paradas ---------- */
+  section{padding:40px 0 4px}
+  .sec-head{display:flex;align-items:center;gap:14px;margin:0 0 6px;flex-wrap:wrap}
+  .stop-badge{
+    font-family:"Space Mono",monospace;font-weight:700;font-size:.8rem;
+    background:var(--asphalt);color:var(--amber);border-radius:50%;
+    width:46px;height:46px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;
+    border:2px solid var(--amber);
+  }
+  h2{font-size:clamp(1.45rem,3.4vw,1.95rem);font-weight:900;letter-spacing:-.01em;margin:0;line-height:1.2;text-transform:uppercase}
+  .sec-sub{color:var(--ink-2);max-width:66ch;margin:6px 0 20px}
+  .card{background:var(--paper);border:1.5px solid var(--line-strong);border-radius:var(--radius);box-shadow:var(--shadow)}
+
+  /* ---------- Checklist de arranque ---------- */
+  .checklist{list-style:none;margin:0;padding:6px 0}
+  .checklist li{display:flex;gap:14px;padding:16px 20px;border-bottom:1px dashed var(--line);align-items:flex-start}
+  .checklist li:last-child{border-bottom:none}
+  .box{flex:0 0 auto;width:26px;height:26px;margin-top:2px;border-radius:4px;background:var(--green-bg);border:1.5px solid var(--green);display:flex;align-items:center;justify-content:center}
+  .box svg{width:15px;height:15px;stroke:var(--green);stroke-width:3.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .box.empty{background:var(--paper);border-color:var(--line-strong)}
+  .checklist h3{margin:0 0 3px;font-size:1.05rem;font-weight:800}
+  .checklist p{margin:0;color:var(--ink-2);font-size:.97rem}
+  .tag{display:inline-block;font-family:"Space Mono",monospace;font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;border-radius:3px;padding:2px 7px;margin-left:8px;vertical-align:2px;background:var(--amber-bg);color:var(--amber-dark);border:1px solid var(--amber)}
+  .example-note{padding:12px 20px;font-size:.85rem;color:var(--muted);border-top:2px solid var(--ink);background:var(--paper-2);font-family:"Space Mono",monospace}
+
+  /* ---------- Precios: tarjetas tipo tarifa de ruta ---------- */
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .price-card{background:var(--paper);border:1.5px solid var(--line-strong);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px 22px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+  .price-card::before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:repeating-linear-gradient(90deg,var(--line-strong) 0 14px,transparent 14px 26px)}
+  .price-card.featured{border:2px solid var(--ink);box-shadow:6px 6px 0 var(--amber)}
+  .price-card.featured::before{background:repeating-linear-gradient(90deg,var(--amber) 0 14px,var(--ink) 14px 26px)}
+  .price-flag{font-family:"Space Mono",monospace;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber-dark);margin:4px 0 8px}
+  .price-card h3{margin:0 0 4px;font-size:1.18rem;font-weight:900;line-height:1.25}
+  .price-amt{font-family:"Space Mono",monospace;font-size:2.5rem;font-weight:700;line-height:1;margin:12px 0 2px}
+  .price-amt small{font-size:.95rem;color:var(--muted);font-weight:400}
+  .price-card ul{list-style:none;margin:14px 0 20px;padding:0;flex:1}
+  .price-card ul li{padding:7px 0 7px 24px;position:relative;font-size:.95rem;color:var(--ink-2);border-bottom:1px dashed var(--line)}
+  .price-card ul li:last-child{border-bottom:none}
+  .price-card ul li::before{content:"▸";position:absolute;left:2px;color:var(--amber-dark);font-weight:700}
+  .price-card .btn{width:100%}
+  .fees-note{margin-top:16px;background:var(--amber-bg);border:1.5px solid var(--amber);border-radius:var(--radius);padding:18px 20px}
+  .fees-note p{margin:0;font-size:.99rem}
+  .fees-note strong{font-weight:800}
+
+  /* ---------- Ruta de proceso ---------- */
+  .route{position:relative}
+  .route-step{display:grid;grid-template-columns:56px 1fr;gap:18px;padding:20px 22px;border-bottom:1px solid var(--line);align-items:start}
+  .route-step:last-child{border-bottom:none}
+  .mile{width:48px;height:48px;border-radius:4px;border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;font-family:"Space Mono",monospace;font-weight:700;font-size:1.15rem;background:var(--amber);color:#1c1a15}
+  .route-step h3{margin:2px 0 4px;font-size:1.08rem;font-weight:800}
+  .route-step p{margin:0;color:var(--ink-2);font-size:.97rem;max-width:62ch}
+  .who{display:inline-block;margin-top:8px;font-family:"Space Mono",monospace;font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:3px 9px;border-radius:3px;background:var(--paper-2);border:1px solid var(--line-strong);color:var(--ink-2)}
+
+  /* ---------- FAQ ---------- */
+  .faq details{background:var(--paper);border:1.5px solid var(--line-strong);border-radius:var(--radius);margin-bottom:10px;box-shadow:var(--shadow);overflow:hidden}
+  .faq summary{cursor:pointer;list-style:none;padding:17px 20px;min-height:52px;font-weight:800;font-size:1.02rem;display:flex;align-items:center;gap:12px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary .q-no{font-family:"Space Mono",monospace;color:var(--amber-dark);font-weight:700;font-size:.9rem}
+  .faq summary .chev{margin-left:auto;flex:0 0 auto;transition:transform .15s ease;color:var(--muted)}
+  .faq details[open ] summary .chev{transform:rotate(180deg)}
+  .faq .a{padding:0 20px 18px 52px;color:var(--ink-2);font-size:.98rem}
+  .faq .a p{margin:0 0 10px}
+  .faq .a p:last-child{margin-bottom:0}
+
+  /* ---------- Línea legal ---------- */
+  .honest{border:2px solid var(--red);border-radius:var(--radius);background:var(--red-bg);padding:24px}
+  .honest h2{font-size:1.3rem;display:flex;align-items:center;gap:10px;color:var(--ink)}
+  .honest p{margin:10px 0 0;max-width:72ch}
+  .honest strong{font-weight:800}
+
+  /* ---------- Formulario ---------- */
+  .form-card{overflow:hidden}
+  .form-head{background:var(--asphalt);color:#fff;padding:20px 24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .form-head h2{color:#fff;font-size:1.3rem}
+  .form-head p{margin:2px 0 0;color:#cbbf9d;font-size:.93rem;width:100%}
+  form.intake{padding:24px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-weight:700;font-size:.93rem;margin-bottom:6px}
+  .field label .req{color:var(--red)}
+  .field input,.field select,.field textarea{width:100%;min-height:50px;padding:12px 14px;font:inherit;font-size:1rem;color:var(--ink);background:var(--paper);border:1.5px solid var(--line-strong);border-radius:4px}
+  .field textarea{min-height:110px;resize:vertical}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:3px solid rgba(232,147,12,.45);border-color:var(--ink)}
+  .field .hint{font-size:.85rem;color:var(--muted);margin-top:5px}
+  .submit{width:100%;min-height:56px;border:2px solid var(--ink);border-radius:4px;cursor:pointer;background:var(--amber);color:#1c1a15;font:inherit;font-weight:900;font-size:1.08rem;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;box-shadow:4px 4px 0 var(--ink)}
+  .submit:hover{filter:brightness(1.05)}
+  .form-legal{font-size:.86rem;color:var(--muted);margin:14px 0 0;text-align:center}
+  .alt-contact{margin-top:16px;text-align:center;font-size:.98rem;color:var(--ink-2)}
+  .alt-contact a{font-weight:800}
+
+  footer{margin-top:44px;border-top:3px solid var(--ink);background:var(--paper)}
+  .foot-in{max-width:1020px;margin:0 auto;padding:26px 20px 34px;display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start;justify-content:space-between}
+  .foot-in p{margin:0;font-size:.92rem;color:var(--muted);max-width:56ch}
+  .foot-in .f-brand{font-weight:900;color:var(--ink);font-size:1rem;text-transform:uppercase}
+  .foot-links{display:flex;flex-direction:column;gap:4px}
+  .foot-links a{min-height:36px;display:inline-flex;align-items:center;font-weight:700;text-decoration:none}
+  .foot-links a:hover{text-decoration:underline}
+
+  @media (max-width:760px){
+    .price-grid{grid-template-columns:1fr}
+    .grid2{grid-template-columns:1fr}
+    .hero-body{padding:24px 18px}
+    .manifest-no{margin-left:0}
+    .route-step{grid-template-columns:48px 1fr;padding:18px 16px}
+    .mile{width:42px;height:42px;font-size:1.05rem}
+    .faq .a{padding-left:20px}
+    form.intake{padding:18px}
+    .manifest{box-shadow:5px 5px 0 var(--amber)}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    .btn,.faq summary .chev{transition:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <span class="loc">Hyattsville, Maryland · Atención en español</span>
+    <a class="tel" href="tel:+12406590154" aria-label="Llamar a la Consultoría Omar Cruz al 240-659-0154">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      240-659-0154
+    </a>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- ============ CABECERA DEL MANIFIESTO ============ -->
+  <header class="hero">
+    <div class="manifest">
+      <div class="manifest-head">
+        <svg class="shield" viewBox="0 0 44 48" aria-hidden="true">
+          <path d="M22 1 41 7v13c0 12.5-8 21.5-19 26C11 41.5 3 32.5 3 20V7Z" fill="#f5efdd"/>
+          <path d="M22 4.5 38 9.7V20c0 10.8-6.7 18.8-16 23C12.7 38.8 6 30.8 6 20V9.7Z" fill="none" stroke="#e8930c" stroke-width="1.6"/>
+          <text x="22" y="24" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="900" font-size="13" fill="#211e17">OC</text>
+          <text x="22" y="35" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" letter-spacing="0.6" fill="#b96e00">MD · USA</text>
+        </svg>
+        <div>
+          <div class="brand-name">Consultoría Omar Cruz</div>
+          <div class="brand-sub">Preparación de documentos · Hyattsville, MD</div>
+        </div>
+        <div class="manifest-no">MANIFIESTO Nº<br /><b>AGENCIA DE DISPATCH · ARRANQUE</b></div>
+      </div>
+      <div class="hero-body">
+        <p class="kicker">Acompañamiento de arranque · Agencia de dispatch de camiones</p>
+        <h1>Tu agencia de dispatch, <span class="hl">con el expediente completo</span> desde el día uno.</h1>
+        <p class="lede">Montar una agencia de dispatch no es solo buscar cargas: primero va el papeleo. <strong>Armamos contigo todo el expediente de arranque</strong> — tu LLC, tu EIN, el contrato carrier–dispatcher listo pa' firmar y el checklist completo de arranque — organizado, revisado y listo pa' que empieces a trabajar con carriers con la casa en orden.</p>
+        <div class="ctas">
+          <a class="btn btn-primary" href="#solicitud">Armar mi expediente</a>
+          <a class="btn btn-ghost" href="#precios">Ver precios</a>
+        </div>
+        <p class="hero-note"><strong>Precio fijo y claro:</strong> $199 el expediente base · $99 si ya compraste el curso Truck Dispatcher Pro · $299 con LLC + EIN incluidos. Las tarifas del estado y del IRS las pagas <strong>tú directamente</strong> — nunca pasan por nuestras manos.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ PARADA 01 · QUÉ INCLUYE ============ -->
+  <section aria-labelledby="incluye-title">
+    <div class="sec-head">
+      <span class="stop-badge" aria-hidden="true">01</span>
+      <h2 id="incluye-title">Qué trae el expediente</h2>
+    </div>
+    <p class="sec-sub">Esto es, punto por punto, lo que queda hecho y organizado en tu carpeta de arranque:</p>
+    <div class="card">
+      <ul class="checklist">
+        <li>
+          <span class="box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6"/></svg></span>
+          <div>
+            <h3>Formación de tu LLC acompañada paso a paso</h3>
+            <p>Preparamos contigo los documentos de formación de tu LLC en tu estado: nombre del negocio, datos del organizador y la información que tú dictas, transcrita tal como debe ir. En el paquete de $299 la LLC y el EIN van incluidos en el servicio.</p>
+          </div>
+        </li>
+        <li>
+          <span class="box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6"/></svg></span>
+          <div>
+            <h3>Obtención de tu EIN ante el IRS</h3>
+            <p>Preparamos la solicitud de tu número de identificación patronal (EIN) con los datos de tu LLC, para que tu agencia pueda abrir cuenta bancaria comercial y operar formalmente.</p>
+          </div>
+        </li>
+        <li>
+          <span class="box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6"/></svg></span>
+          <div>
+            <h3>Contrato carrier–dispatcher listo pa' firmar<span class="tag">Documento central</span></h3>
+            <p>El acuerdo de servicios entre tu agencia y el carrier, preparado con los datos que tú dictas: servicios de dispatch, porciento o tarifa acordada, términos de pago, duración y responsabilidades de cada parte. Queda listo pa' imprimir y firmar con tu primer carrier.</p>
+          </div>
+        </li>
+        <li>
+          <span class="box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6"/></svg></span>
+          <div>
+            <h3>Checklist de arranque completo</h3>
+            <p>La lista maestra de arranque de una agencia de dispatch: documentos del negocio, cuenta bancaria comercial, correo y teléfono del negocio, herramientas de trabajo (load boards, hojas de ruta, registro de carriers) y los pasos en orden, pa' que no se te quede nada fuera.</p>
+          </div>
+        </li>
+        <li>
+          <span class="box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6"/></svg></span>
+          <div>
+            <h3>Formularios de trabajo organizados</h3>
+            <p>Las plantillas que vas a usar a diario, organizadas en tu expediente: perfil del carrier (carrier packet de tu agencia), hoja de datos del camión y el chofer, y registro de cargas despachadas.</p>
+          </div>
+        </li>
+        <li>
+          <span class="box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6"/></svg></span>
+          <div>
+            <h3>Expediente completo armado y revisado</h3>
+            <p>Al final, todo queda junto y revisado línea por línea: LLC, EIN, contrato, checklist y formularios. Sales con una carpeta de arranque completa, no con papeles sueltos.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ PARADA 02 · PRUEBA VISIBLE: EJEMPLO ============ -->
+  <section aria-labelledby="ejemplo-title">
+    <div class="sec-head">
+      <span class="stop-badge" aria-hidden="true">02</span>
+      <h2 id="ejemplo-title">Así se ve el expediente armado</h2>
+    </div>
+    <p class="sec-sub">Esto es un <strong>ejemplo</strong> de cómo queda el checklist de arranque dentro del expediente. El tuyo se arma con tus datos reales:</p>
+    <div class="card">
+      <ul class="checklist">
+        <li>
+          <span class="box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6"/></svg></span>
+          <div>
+            <h3>LLC formada — «Ejemplo Logistics LLC»</h3>
+            <p>Artículos de organización archivados · agente registrado definido · copia en la carpeta, sección 1.</p>
+          </div>
+        </li>
+        <li>
+          <span class="box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6"/></svg></span>
+          <div>
+            <h3>EIN asignado por el IRS</h3>
+            <p>Carta de confirmación del EIN en la carpeta, sección 2 · listo pa' abrir la cuenta bancaria comercial.</p>
+          </div>
+        </li>
+        <li>
+          <span class="box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6"/></svg></span>
+          <div>
+            <h3>Contrato carrier–dispatcher preparado</h3>
+            <p>Tarifa de dispatch, términos de pago y responsabilidades escritos con los datos dictados · listo pa' firmar, sección 3.</p>
+          </div>
+        </li>
+        <li>
+          <span class="box empty" aria-hidden="true"></span>
+          <div>
+            <h3>Cuenta bancaria comercial</h3>
+            <p>Paso siguiente del checklist: abrirla con la LLC y el EIN ya en mano.</p>
+          </div>
+        </li>
+        <li>
+          <span class="box empty" aria-hidden="true"></span>
+          <div>
+            <h3>Suscripción a load board y hojas de ruta</h3>
+            <p>Paso siguiente del checklist: herramientas de trabajo activas antes de buscar el primer carrier.</p>
+          </div>
+        </li>
+      </ul>
+      <div class="example-note">EJEMPLO ILUSTRATIVO — los nombres y datos de esta muestra son ficticios; tu expediente se arma con tu información real.</div>
+    </div>
+  </section>
+
+  <!-- ============ PARADA 03 · PRECIOS ============ -->
+  <section id="precios" aria-labelledby="precios-title">
+    <div class="sec-head">
+      <span class="stop-badge" aria-hidden="true">03</span>
+      <h2 id="precios-title">Precios</h2>
+    </div>
+    <p class="sec-sub">Tres opciones, un solo precio cada una, sin cargos escondidos:</p>
+    <div class="price-grid">
+      <article class="price-card featured">
+        <p class="price-flag">El expediente base</p>
+        <h3>Expediente Agencia de Dispatch</h3>
+        <p class="price-amt">$199<small> pago único</small></p>
+        <ul>
+          <li>Acompañamiento LLC + EIN paso a paso</li>
+          <li>Contrato carrier–dispatcher listo pa' firmar</li>
+          <li>Checklist de arranque completo</li>
+          <li>Formularios de trabajo organizados</li>
+          <li>Expediente final revisado</li>
+        </ul>
+        <a class="btn btn-primary" href="#solicitud">Quiero este paquete</a>
+      </article>
+      <article class="price-card">
+        <p class="price-flag">Si ya compraste el curso</p>
+        <h3>Precio estudiante Truck Dispatcher Pro</h3>
+        <p class="price-amt">$99<small> pago único</small></p>
+        <ul>
+          <li>El mismo expediente base completo</li>
+          <li>Precio especial por ser estudiante del curso Truck Dispatcher Pro de la Academia</li>
+          <li>Se verifica tu compra del curso al empezar</li>
+          <li>Expediente final revisado</li>
+        </ul>
+        <a class="btn btn-ghost" href="#solicitud">Quiero el de estudiante</a>
+      </article>
+      <article class="price-card">
+        <p class="price-flag">Negocio formal desde cero</p>
+        <h3>Con LLC + EIN incluidos</h3>
+        <p class="price-amt">$299<small> pago único</small></p>
+        <ul>
+          <li>Todo lo del expediente base ($199)</li>
+          <li>Formación de tu LLC incluida en el servicio</li>
+          <li>Obtención de tu EIN incluida en el servicio</li>
+          <li>Sales con agencia formal y expediente completo</li>
+        </ul>
+        <a class="btn btn-ghost" href="#solicitud">Quiero el completo</a>
+      </article>
+    </div>
+    <div class="fees-note" role="note">
+      <p><strong>Importante:</strong> las tarifas oficiales de formación de la LLC de tu estado y cualquier tarifa gubernamental <strong>no están incluidas</strong> en los precios de arriba y <strong>las pagas siempre tú, directamente al estado</strong>. Nuestro cobro es solo por la preparación y organización de tus documentos.</p>
+    </div>
+  </section>
+
+  <!-- ============ PARADA 04 · LA RUTA ============ -->
+  <section aria-labelledby="ruta-title">
+    <div class="sec-head">
+      <span class="stop-badge" aria-hidden="true">04</span>
+      <h2 id="ruta-title">La ruta, parada por parada</h2>
+    </div>
+    <p class="sec-sub">Así corre tu expediente de principio a fin:</p>
+    <div class="card route">
+      <div class="route-step">
+        <span class="mile" aria-hidden="true">1</span>
+        <div>
+          <h3>Llenas el formulario de esta página</h3>
+          <p>Cuéntanos en qué punto estás: si ya tienes LLC, si ya tomaste el curso Truck Dispatcher Pro y qué tipo de camiones quieres despachar. Tu solicitud llega directo a nuestro correo.</p>
+          <span class="who">Tú · 3 minutos</span>
+        </div>
+      </div>
+      <div class="route-step">
+        <span class="mile" aria-hidden="true">2</span>
+        <div>
+          <h3>Te contactamos y revisamos tu caso</h3>
+          <p>Confirmamos qué paquete te conviene, qué documentos tienes y cuáles te faltan, y agendamos tu sesión de preparación.</p>
+          <span class="who">Consultoría Omar Cruz</span>
+        </div>
+      </div>
+      <div class="route-step">
+        <span class="mile" aria-hidden="true">3</span>
+        <div>
+          <h3>Sesión de preparación de documentos</h3>
+          <p>Preparamos contigo la formación de la LLC, la solicitud del EIN y el contrato carrier–dispatcher con los datos que tú dictas. Tú apruebas cada dato antes de que quede en el papel.</p>
+          <span class="who">Juntos · con tus datos</span>
+        </div>
+      </div>
+      <div class="route-step">
+        <span class="mile" aria-hidden="true">4</span>
+        <div>
+          <h3>Checklist de arranque y formularios</h3>
+          <p>Organizamos tu checklist completo de arranque y las plantillas de trabajo diario: perfil del carrier, datos del camión y registro de cargas.</p>
+          <span class="who">Consultoría Omar Cruz</span>
+        </div>
+      </div>
+      <div class="route-step">
+        <span class="mile" aria-hidden="true">5</span>
+        <div>
+          <h3>Revisión final del expediente completo</h3>
+          <p>Revisamos la carpeta entera, sección por sección. Lo que falte, se completa antes de cerrar — no después.</p>
+          <span class="who">Consultoría Omar Cruz</span>
+        </div>
+      </div>
+      <div class="route-step">
+        <span class="mile" aria-hidden="true">6</span>
+        <div>
+          <h3>Tú firmas y sales a trabajar</h3>
+          <p>Firmas tu contrato con tu primer carrier cuando lo tengas y empiezas a operar tu agencia. El trabajo de conseguir carriers y despachar es tuyo — el expediente ya va en orden.</p>
+          <span class="who">Tú · con tu expediente listo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PARADA 05 · FAQ ============ -->
+  <section class="faq" aria-labelledby="faq-title">
+    <div class="sec-head">
+      <span class="stop-badge" aria-hidden="true">05</span>
+      <h2 id="faq-title">Preguntas frecuentes</h2>
+    </div>
+    <p class="sec-sub">Las que nos hacen todos, contestadas de frente:</p>
+
+    <details>
+      <summary><span class="q-no">P.1</span> ¿Ustedes me consiguen cargas o carriers?
+        <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="a">
+        <p><strong>No.</strong> Nuestro servicio es el expediente de arranque: los documentos de tu agencia organizados y listos. <strong>No despachamos por ti, no te conseguimos cargas ni carriers y no prometemos ingresos ni resultados.</strong> El trabajo operativo de la agencia — buscar carriers, negociar y despachar — es tuyo.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="q-no">P.2</span> ¿Necesito una licencia especial pa' ser dispatcher?
+        <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="a">
+        <p>El dispatcher independiente que trabaja bajo la autoridad (MC) del carrier no tramita una licencia federal propia como la del broker; por eso el arranque se concentra en tener el negocio formal: LLC, EIN y un contrato claro con cada carrier. Si tu plan es operar como broker, eso es otra figura distinta y te lo decimos de frente en la revisión de tu caso.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="q-no">P.3</span> ¿Qué es exactamente lo que pago con los $199?
+        <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="a">
+        <p>El acompañamiento y la preparación de tu expediente de arranque: documentos de la LLC y del EIN preparados paso a paso contigo, el contrato carrier–dispatcher listo pa' firmar, el checklist de arranque completo, los formularios de trabajo organizados y la revisión final de la carpeta.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="q-no">P.4</span> ¿Por qué el de $99? ¿Qué cambia?
+        <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="a">
+        <p>Nada cambia en el servicio: es el mismo expediente base. El precio de $99 es el beneficio de quien ya compró el curso <strong>Truck Dispatcher Pro</strong> de la Academia del Profe Omar. Verificamos tu compra al empezar y listo.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="q-no">P.5</span> ¿El paquete de $299 incluye las tarifas del estado pa' la LLC?
+        <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="a">
+        <p>No. En el paquete de $299 el <strong>servicio</strong> de formar la LLC y obtener el EIN va incluido en nuestro trabajo, pero la tarifa oficial que cobra tu estado por registrar la LLC la pagas tú directamente al estado, como en todos nuestros servicios. Te decimos el monto exacto de tu estado antes de empezar.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="q-no">P.6</span> ¿El contrato carrier–dispatcher lo revisa un abogado?
+        <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="a">
+        <p>No. Es una plantilla de acuerdo de servicios preparada con los datos que tú dictas (tarifa, términos de pago, responsabilidades). <strong>No es asesoría legal</strong> y Omar Cruz no es abogado. Si quieres que un abogado revise tu contrato antes de firmar, te lo recomendamos y es tu decisión contratarlo por tu cuenta.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="q-no">P.7</span> Ya tengo LLC y EIN. ¿Me sirve el servicio?
+        <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="a">
+        <p>Sí. Revisamos lo que ya tienes, lo incorporamos a tu expediente y nos concentramos en lo que te falta: el contrato carrier–dispatcher, el checklist de arranque y los formularios de trabajo. En la revisión inicial te decimos exactamente en qué punto estás.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ LÍNEA LEGAL ============ -->
+  <section aria-labelledby="legal-title">
+    <div class="honest">
+      <h2 id="legal-title">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        La línea clara, sin letra pequeña
+      </h2>
+      <p>La <strong>Consultoría Omar Cruz</strong> es un servicio privado de <strong>preparación, transcripción y organización de documentos</strong>: Omar transcribe y organiza lo que el cliente dicta, con la información que tú nos das.</p>
+      <p><strong>Omar Cruz no es abogado</strong>, no ofrece <strong>asesoría legal</strong> y este servicio no está afiliado al IRS, a ninguna agencia estatal ni a la FMCSA.</p>
+      <p><strong>No despachamos por el cliente, no le conseguimos cargas ni carriers, y no prometemos ingresos ni resultados.</strong> Los resultados de tu agencia dependen de tu trabajo, tu mercado y tus acuerdos con cada carrier. Las tarifas oficiales las pagas siempre tú, directamente a la entidad que las cobra.</p>
+    </div>
+  </section>
+
+  <!-- ============ PARADA 06 · FORMULARIO ============ -->
+  <section id="solicitud" aria-labelledby="form-title">
+    <div class="sec-head">
+      <span class="stop-badge" aria-hidden="true">06</span>
+      <h2>Abre tu expediente</h2>
+    </div>
+    <div class="card form-card">
+      <div class="form-head">
+        <svg width="34" height="37" viewBox="0 0 44 48" aria-hidden="true">
+          <path d="M22 1 41 7v13c0 12.5-8 21.5-19 26C11 41.5 3 32.5 3 20V7Z" fill="#ffffff" opacity="0.14"/>
+          <path d="M22 4.5 38 9.7V20c0 10.8-6.7 18.8-16 23C12.7 38.8 6 30.8 6 20V9.7Z" fill="none" stroke="#e8930c" stroke-width="1.6"/>
+          <text x="22" y="24" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="900" font-size="13" fill="#ffffff">OC</text>
+          <text x="22" y="35" text-anchor="middle" font-family="Space Mono, monospace" font-size="6" letter-spacing="0.6" fill="#e8930c">MD · USA</text>
+        </svg>
+        <h2 id="form-title">Formulario de solicitud</h2>
+        <p>Tu información llega directo a nuestro correo y te contactamos para revisar tu caso. Sin compromiso.</p>
+      </div>
+
+      <form class="intake" action="https://formsubmit.co/leydelswing@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Nueva solicitud — Expediente Agencia de Dispatch" />
+        <input type="hidden" name="_cc" value="swingbravo@gmail.com" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+
+        <div class="grid2">
+          <div class="field">
+            <label for="f-nombre">Nombre completo <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-nombre" name="Nombre completo" type="text" autocomplete="name" required placeholder="Tal como aparece en tu identificación" />
+          </div>
+          <div class="field">
+            <label for="f-telefono">Teléfono <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-telefono" name="Teléfono" type="tel" autocomplete="tel" required placeholder="(240) 000-0000" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-correo">Correo electrónico <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-correo" name="Correo electrónico" type="email" autocomplete="email" required placeholder="tunombre@correo.com" />
+        </div>
+
+        <div class="grid2">
+          <div class="field">
+            <label for="f-llc">¿Ya tienes LLC y EIN? <span class="req" aria-hidden="true">*</span></label>
+            <select id="f-llc" name="¿Ya tiene LLC y EIN?" required>
+              <option value="" disabled selected>Selecciona una opción</option>
+              <option value="Sí, tengo LLC y EIN">Sí, tengo LLC y EIN</option>
+              <option value="Tengo LLC, me falta el EIN">Tengo LLC, me falta el EIN</option>
+              <option value="No, empiezo desde cero">No, empiezo desde cero</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-curso">¿Ya compraste el curso Truck Dispatcher Pro? <span class="req" aria-hidden="true">*</span></label>
+            <select id="f-curso" name="¿Ya compró el curso Truck Dispatcher Pro?" required>
+              <option value="" disabled selected>Selecciona una opción</option>
+              <option value="Sí, ya lo compré">Sí, ya lo compré</option>
+              <option value="No, todavía no">No, todavía no</option>
+            </select>
+            <p class="hint">Si ya lo compraste, tu expediente sale a $99.</p>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div class="field">
+            <label for="f-camiones">Tipo de camiones que quieres despachar <span class="req" aria-hidden="true">*</span></label>
+            <select id="f-camiones" name="Tipo de camiones a despachar" required>
+              <option value="" disabled selected>Selecciona una opción</option>
+              <option value="Dry van / reefer">Dry van / reefer</option>
+              <option value="Flatbed / step deck">Flatbed / step deck</option>
+              <option value="Box truck">Box truck</option>
+              <option value="Hotshot">Hotshot</option>
+              <option value="Varios / todavía no lo sé">Varios / todavía no lo sé</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-paquete">Paquete de interés <span class="req" aria-hidden="true">*</span></label>
+            <select id="f-paquete" name="Paquete de interés" required>
+              <option value="" disabled selected>Selecciona una opción</option>
+              <option value="Expediente Agencia de Dispatch — $199">Expediente Agencia de Dispatch — $199</option>
+              <option value="Precio estudiante Truck Dispatcher Pro — $99">Precio estudiante Truck Dispatcher Pro — $99</option>
+              <option value="Con LLC + EIN incluidos — $299">Con LLC + EIN incluidos — $299</option>
+              <option value="No estoy seguro, quiero que me orienten">No estoy seguro, quiero que me orienten</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-mensaje">Mensaje libre</label>
+          <textarea id="f-mensaje" name="Mensaje" placeholder="Cuéntanos tu situación: qué tienes listo, qué te falta, cualquier duda…"></textarea>
+        </div>
+
+        <button class="submit" type="submit">
+          Enviar mi solicitud
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </button>
+        <p class="form-legal">Al enviar, tu información llega al correo de la Consultoría Omar Cruz para contactarte sobre este servicio. No compartimos tus datos con terceros sin tu autorización.</p>
+      </form>
+    </div>
+    <p class="alt-contact">¿Prefieres hablar primero? Llámanos al <a href="tel:+12406590154">240-659-0154</a> · Consultoría Omar Cruz, Hyattsville, Maryland.</p>
+  </section>
+
+</div>
+
+<footer>
+  <div class="foot-in">
+    <div>
+      <p class="f-brand">Consultoría Omar Cruz</p>
+      <p>Preparación, transcripción y organización de documentos · Hyattsville, Maryland. Servicio privado, sin afiliación con el IRS, agencias estatales ni la FMCSA. Omar Cruz no es abogado y no ofrece asesoría legal. No despachamos por el cliente ni conseguimos cargas.</p>
+    </div>
+    <nav class="foot-links" aria-label="Contacto y secciones">
+      <a href="tel:+12406590154">Teléfono: 240-659-0154</a>
+      <a href="#precios">Precios</a>
+      <a href="#solicitud">Abrir mi expediente</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
